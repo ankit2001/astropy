@@ -57,7 +57,7 @@ class Test2DConvolutions(object):
         shape = kernel.array.shape
 
         x = np.zeros(shape)
-        xslice = [slice(sh // 2, sh // 2 + 1) for sh in shape]
+        xslice = tuple([slice(sh // 2, sh // 2 + 1) for sh in shape])
         x[xslice] = 1.0
 
         c2 = convolve_fft(x, kernel, boundary='fill')
@@ -96,7 +96,7 @@ class Test2DConvolutions(object):
         kernel = np.ones([width, width])
 
         x = np.zeros(shape)
-        xslice = [slice(sh // 2, sh // 2 + 1) for sh in shape]
+        xslice = tuple([slice(sh // 2, sh // 2 + 1) for sh in shape])
         x[xslice] = 1.0
 
         c2 = convolve_fft(x, kernel, boundary='fill')
@@ -116,7 +116,7 @@ class Test2DConvolutions(object):
         kernel2 = Box2DKernel(width, mode='oversample', factor=10)
 
         x = np.zeros(shape)
-        xslice = [slice(sh // 2, sh // 2 + 1) for sh in shape]
+        xslice = tuple([slice(sh // 2, sh // 2 + 1) for sh in shape])
         x[xslice] = 1.0
 
         c2 = convolve_fft(x, kernel2, boundary='fill')
